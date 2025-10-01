@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Содержимое папки /bin</title>
+</head>
+<body>
+    <h1>Файлы в каталоге /bin:</h1>
+    <ul id="fileList"></ul>
+
+    <script>
+        // Укажите здесь данные вашего репозитория
+        const repoOwner = 'SiberK'; // Замените на ваш GitHub username
+        const repoName = 'FwUpdate'; // Замените на название репозитория
+        const folderPath = 'bin'; // Путь к вашей папке
+        const branch = 'main'; // Ветка по умолчанию (может быть main, master и т.д.)
+
+        async function loadDirectory() {
+            try {
+                // Делаем запрос к GitHub API
+                const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folderPath}?ref=${branch}`);
+                
+                if (!response.ok) {
+                    throw new Error('Не удалось загрузить содержимое папки');
+                }
+                
+                const contents = await response.json();
+                const fileList = document.getElementById('fileList');
+                fileList.innerHTML = ''; // Очищаем список перед заполнением
+
+                // Для каждого элемента в папке создаем пункт списка со ссылкой
+                contents.forEach(item => {
+                    const listItem = document.createElement('li');
+                    const link = document.createElement('a');
+                    
+                    // Если это файл - ссылка ведет напрямую к нему
+                    // Если это папка - ссылка ведет на страницу с ее содержимым
+                    link.href = item.type === 'dir' ? `./${item.name}/` : `./${folderPath}/${item.name}`;
+                    link.textContent = item.name + (item.type === 'dir' ? '/' : '');
+                    
+                    listItem.appendChild(link);
+                    fileList.appendChild(listItem);
+                });
+
+            } catch (error) {
+                console.error('Ошибка:', error);
+                document.getElementById('fileList').innerHTML = '<li>Ошибка загрузки списка файлов</li>';
+            }
+        }
+
+        // Загружаем содержимое при открытии страницы
+        loadDirectory();
+    </script>
+</body>
+</html>
