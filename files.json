@@ -2,7 +2,7 @@
   "status": "success",
   "repository": "SiberK/FwUpdate",
   "directory": "bin",
-  "file_count": 3,
+  "file_count": 4,
   "files": [
     {
       "name": "fw_Boil_5.0.14.ESP32.bin",
@@ -15,6 +15,10 @@
     {
       "name": "fw_Boil_5.0.17.ESP32.bin",
       "download_url": "https://siberk.github.io/FwUpdate/bin/fw_Boil_5.0.17.ESP32.bin"
+    },
+    {
+      "name": "fw_Boil_5.0.18.ESP32.bin",
+      "download_url": "https://siberk.github.io/FwUpdate/bin/fw_Boil_5.0.18.ESP32.bin"
     }
   ]
 }
