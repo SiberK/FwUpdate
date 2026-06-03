@@ -5,8 +5,8 @@
   "file_count": 2,
   "files": [
     {
-      "name": "fw_Boil_5.0.19.ESP32.bin",
-      "download_url": "https://siberk.github.io/FwUpdate/bin/fw_Boil_5.0.19.ESP32.bin"
+      "name": "fw_Boil_5.0.19rc.ESP32.bin",
+      "download_url": "https://siberk.github.io/FwUpdate/bin/fw_Boil_5.0.19rc.ESP32.bin"
     },
     {
       "name": "fw_Boil_5.0.18.ESP32.bin",
